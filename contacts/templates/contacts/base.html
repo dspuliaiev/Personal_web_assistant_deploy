@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Contacts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}">
+</head>
+<body><center>
+<script>
+        let pageWidth = document.documentElement.scrollWidth;
+        document.write("<table width="+pageWidth+" cellspacing=0 cellPadding=0>");
+</script> 
+       <tr><td width=80%>
+           <h3 align="center">
+               <a class="title" href="/">Contacts</a>
+           </h3>
+	</td>
+	{% if user.is_authenticated %}
+	<td width=20%>
+		<a class="no_underlining" href="{% url 'users:logout' %}" role="button">Logout</a>&nbsp;
+		<a class="no_underlining" href="/edit">Edit database</a>
+        </td></tr>
+
+	{% else %}
+	<td width=20%>
+            <p class="center">
+                <a class="no_underlining" href="/users/login">Login</a>&nbsp;
+		<a class="no_underlining" href="/users/signup">Sign Up</a>
+            </p>
+        </td></tr>
+	{% endif %}
+       <tr height=30></tr>
+    </table>
+
+{% block content %} {% endblock %}
+
+<center></body>
+</html>
