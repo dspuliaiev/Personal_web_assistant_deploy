@@ -5,6 +5,16 @@ from datetime import timedelta
 from .models import Contact
 from .forms import ContactForm
 
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+def main(request):
+    return render( request, "contacts/index.html")
+
+
+@login_required
+def edit(request):
+    return render(request, "contacts/edit.html")
 
 
 class ContactCreateView(CreateView):
