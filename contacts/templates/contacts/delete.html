@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Confirm Delete</title>
-</head>
-<body>
-    <h1>Confirm Delete</h1>
-    <p>Are you sure you want to delete contact "{{ object.name }}"?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Delete</button>
-        <a href="{% url 'contacts-list' %}">Cancel</a>
-    </form>
-</body>
-</html>
+{% extends "contacts/base.html" %}
+
+{% block content %}
+<h2>Видалити </h2>
+
+
+<form method="post">
+    {% csrf_token %}
+    <p> Are you sure you want to delete? {{object.title}}</p>
+    <button type="submit" class="btn btn-primary">Confirm</button>
+    <a href="{% url 'contacts:list' %}" class="btn btn-light"> I changed my mind </a>
+</form>
+{% endblock %}
+
