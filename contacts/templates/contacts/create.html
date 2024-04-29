@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Contact</title>
-</head>
-<body>
-    <h1>Create Contact</h1>
+{% extends "contacts/base.html" %}
+
+{% block content %}
+
+    <h2>Create contact</h2>
+
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{% url 'contacts:main' %}" class="btn btn-light">Return</a>
     </form>
-</body>
-</html>
+
+{% endblock %}
+
