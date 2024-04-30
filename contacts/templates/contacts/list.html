@@ -1,40 +1,44 @@
 {% extends "contacts/base.html" %}
 
 {% block content %}
-<h2>Contacts list</h2>
-<div class="col-3">
-{#    <a href="{% url 'contacts:create' %}" class="btn btn-primary"> New contact </a>#}
-</div>
-<div class="list-group">
-    {% for contact in list %}
-    <div class="list-group-item bg-light bg-gradient">
-        <div>
-            <h5>{{ contact.first_name }} {{ contact.last_name }}</h5>
-            <p>Phone: {{ contact.phone_number }}</p>
-            <small>{{ contact.birthday }}</small>
-        </div>
-        <p>
-            {{ contact.email|truncatechars:30 }}
-        </p>
-        <a href="{% url 'contacts:update' contact.id %}" class="btn btn-secondary">Edit</a>
+<div class="container mt-5"> {# Добавляем отступ сверху #}
+    <h2 class="text-center mb-4">Contacts list</h2> {# Выравниваем заголовок по центру и добавляем отступ снизу #}
+    <div class="col-3">
+        {# <a href="{% url 'contacts:create' %}" class="btn btn-primary"> New contact </a> #}
     </div>
-    {% endfor %}
-</div>
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+    <div class="list-group">
+        {% for contact in list %}
+        <div class="list-group-item bg-light bg-gradient mb-2"> {# Добавляем отступ между контактами #}
+            <div>
+                <h5>{{ contact.first_name }} {{ contact.last_name }}</h5>
+                <p>Phone: {{ contact.phone_number }}</p>
+                <small>{{ contact.birthday }}</small>
+            </div>
+            <p>
+                {{ contact.email|truncatechars:30 }}
+            </p>
+            <a href="{% url 'contacts:update' contact.id %}" class="btn btn-secondary">Edit</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
         </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
+    </div>
 </div>
 {% endblock %}
+
+

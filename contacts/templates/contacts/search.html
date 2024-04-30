@@ -1,48 +1,52 @@
 {% extends "contacts/base.html" %}
 
 {% block content %}
-<h2>Search contacts</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Search contacts</h2>
+    <form method="get">
+        <input type="text" name="q" placeholder="Search..." class="form-control mb-2"> {# Добавлен класс Bootstrap для стилизации поля ввода #}
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
 
-<form method="get">
-  <input type="text" name="q" placeholder="Search...">
-  <button type="submit" class="btn btn-primary">Search</button>
-</form>
-
-{% if page_obj %}
-  <h3>Search results:</h3>
-  <div class="list-group">
-    {% for contact in page_obj %}
-      <div class="list-group-item bg-light bg-gradient">
-        <div>
-          <h5>{{ contact.first_name }} {{ contact.last_name }}</h5>
-          <p>Phone: {{ contact.phone_number }}</p>
-          <small>{{ contact.birthday }}</small>
+    {% if page_obj %}
+    <h3 class="mt-4">Search results:</h3> {# Добавлен отступ сверху для заголовка результатов поиска #}
+    <div class="list-group">
+        {% for contact in page_obj %}
+        <div class="list-group-item bg-light bg-gradient mb-2">
+            <div>
+                <h5>{{ contact.first_name }} {{ contact.last_name }}</h5>
+                <p>Phone: {{ contact.phone_number }}</p>
+                <small>{{ contact.birthday }}</small>
+            </div>
+            <p>
+                {{ contact.email|truncatechars:30 }}
+            </p>
+            <a href="{% url 'contacts:update' contact.id %}" class="btn btn-secondary">Edit</a>
         </div>
-        <p>
-          {{ contact.email|truncatechars:30 }}
-        </p>
-        <a href="{% url 'contacts:update' contact.id %}" class="btn btn-secondary">Edit</a>
-      </div>
-    {% endfor %}
-  </div>
-  <div class="pagination">
-    <span class="step-links">
-      {% if page_obj.has_previous %}
-        <a href="?q={{ request.GET.q }}&page=1">&laquo; first</a>
-        <a href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">previous</a>
-      {% endif %}
+        {% endfor %}
+    </div>
+    <div class="pagination mt-4"> {# Добавлен отступ сверху для блока пагинации #}
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?q={{ request.GET.q }}&page=1">&laquo; first</a>
+            <a href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
 
-      <span class="current">
-        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-      </span>
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
 
-      {% if page_obj.has_next %}
-        <a href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">next</a>
-        <a href="?q={{ request.GET.q }}&page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-      {% endif %}
-    </span>
-  </div>
-{% else %}
-  <p>No contacts found.</p>
-{% endif %}
+            {% if page_obj.has_next %}
+            <a href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">next</a>
+            <a href="?q={{ request.GET.q }}&page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% else %}
+    <p class="mt-4">No contacts found.</p> {# Добавлен отступ сверху для сообщения об отсутствии результатов #}
+    {% endif %}
+</div>
 {% endblock %}
+
+
+

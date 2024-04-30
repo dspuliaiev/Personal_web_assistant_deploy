@@ -1,30 +1,32 @@
 {% extends "contacts/base.html" %}
 
 {% block content %}
-<h2>Upcoming birthdays</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Upcoming birthdays</h2>
+    <form method="get" action="{% url 'contacts:birthdays' %}" class="mb-4">
+        <input type="number" name="days_ahead" value="{{ request.GET.days_ahead }}" placeholder="Days ahead (default 30)" class="form-control mb-2">
+        <button type="submit" class="btn btn-primary btn-block">Search</button> {# Добавлен класс Bootstrap для кнопки поиска #}
+    </form>
 
-<form method="get" action="{% url 'contacts:birthdays' %}">
-  <input type="number" name="days_ahead" value="{{ request.GET.days_ahead }}" placeholder="Days ahead (default 30)">
- <button type="submit" class="btn btn-primary">Search</button>
-</form>
-
-{% if birthdays %}
-  <div class="list-group"> 
-    {% for contact in birthdays %}
-      <div class="list-group-item bg-light bg-gradient">
-        <div>
-          <h5>{{ contact.first_name }} {{ contact.last_name }}</h5>
-          <p>Phone: {{ contact.phone_number }}</p>
-          <small>{{ contact.birthday }}</small>
+    {% if birthdays %}
+    <div class="list-group">
+        {% for contact in birthdays %}
+        <div class="list-group-item bg-light bg-gradient mb-2">
+            <div>
+                <h5>{{ contact.first_name }} {{ contact.last_name }}</h5>
+                <p>Phone: {{ contact.phone_number }}</p>
+                <small>{{ contact.birthday }}</small>
+            </div>
+            <p>
+                {{ contact.email|truncatechars:30 }}
+            </p>
+            <a href="{% url 'contacts:update' contact.id %}" class="btn btn-secondary btn-block">Edit</a> {# Добавлен класс Bootstrap для кнопки редактирования #}
         </div>
-        <p>
-          {{ contact.email|truncatechars:30 }}
-        </p>
-        <a href="{% url 'contacts:update' contact.id %}" class="btn btn-secondary">Edit</a> 
-      </div>
-    {% endfor %}
-  </div>
-{% else %}
-  <p>No upcoming birthdays found.</p>
-{% endif %}
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="mt-4">No upcoming birthdays found.</p>
+    {% endif %}
+</div>
 {% endblock %}
+

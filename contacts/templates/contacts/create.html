@@ -1,12 +1,25 @@
 {% extends "contacts/base.html" %}
 
 {% block content %}
-
-    <h2>Create contact</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Create contact</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.first_name.label_tag }}
+        <input type="text" name="first_name" placeholder="First name" class="form-control mb-2">
+        {{ form.last_name.label_tag }}
+        <input type="text" name="last_name" placeholder="Last name" class="form-control mb-2">
+        {{ form.phone_number.label_tag }}
+        <input type="text" name="phone_number" placeholder="Phone number" class="form-control mb-2">
+        {{ form.email.label_tag }}
+        <input type="email" name="email" placeholder="Email" class="form-control mb-2">
+        {{ form.birthday.label_tag }}
+        <input type="date" name="birthday" placeholder="Birthday" class="form-control mb-2">
         <button type="submit" class="btn btn-primary">Submit</button>
         <a href="{% url 'contacts:main' %}" class="btn btn-light">Return</a>
     </form>
+</div>
 {% endblock %}
+
+
+
