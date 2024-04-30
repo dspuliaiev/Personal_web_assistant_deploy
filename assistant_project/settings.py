@@ -64,11 +64,11 @@ WSGI_APPLICATION = 'assistant_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DATABASE_NAME').strip(),
-        'USER': env('DATABASE_USER').strip(),
-        'PASSWORD': env('DATABASE_PASSWORD').strip(),
-        'HOST': env('DATABASE_HOST').strip(),
-        'PORT': env('DATABASE_PORT').strip(),
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD'),
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT'),
     }
 }
 
