@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Нотатки</title>
+    <title>Notes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,18 +55,18 @@
     </style>
 </head>
 <body>
-    <h2>Нотатки</h2>
+    <h2>Notes</h2>
     <div class="notes-container">
         {% for note in notes %}
         <div class="note">
             {{ note.title }} -
-            <a href="{% url 'notes:note_update' note.pk %}">Редагувати</a> -
-            <a href="{% url 'notes:note_delete' note.pk %}">Видалити</a>
+            <a href="{% url 'notes:note_update' note.pk %}">Edit</a> -
+            <a href="{% url 'notes:note_delete' note.pk %}">Delete</a>
         </div>
         {% endfor %}
     </div>
-    <a href="{% url 'notes:note_create' %}" class="create-link">Створити нову нотатку</a>
-    <a href="{% url 'contacts:main' %}" class="menu-link">Головне меню</a>
+    <a href="{% url 'notes:note_create' %}" class="create-link">Create a new note</a>
+    <a href="{% url 'contacts:main' %}" class="menu-link">Main menu</a>
 </body>
 </html>
 

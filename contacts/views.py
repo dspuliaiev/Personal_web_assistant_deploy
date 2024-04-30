@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, TemplateView
 from django.urls import reverse_lazy
@@ -29,6 +29,7 @@ class ContactCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class ContactUpdateView(LoginRequiredMixin, UpdateView):
     model = Contact
     form_class = ContactForm
@@ -38,6 +39,7 @@ class ContactUpdateView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return super().get_queryset().filter(user=self.request.user)
 
+
 class ContactDeleteView(LoginRequiredMixin, DeleteView):
     model = Contact
     template_name = 'contacts/delete.html'
@@ -45,6 +47,7 @@ class ContactDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_queryset(self):
         return super().get_queryset().filter(user=self.request.user)
+
 
 class ContactSearchResultsView(LoginRequiredMixin, ListView):
     model = Contact
@@ -75,11 +78,9 @@ class ContactUpcomingBirthdayListView(LoginRequiredMixin, ListView):
         days_ahead = self.request.GET.get('days_ahead', 30)
         today = timezone.now().date()
         end_date = today + timezone.timedelta(days=int(days_ahead))
-
         return Contact.objects.filter(
             Q(birthday__day__gte=today.day, birthday__month=today.month) |
             Q(birthday__day__lte=end_date.day, birthday__month=end_date.month),
             user=self.request.user
         )
-
 

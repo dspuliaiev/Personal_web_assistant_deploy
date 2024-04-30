@@ -19,3 +19,6 @@ class ContactForm(forms.ModelForm):
                 'invalid': "Please enter a valid email address.",
             },
         }
+
+
+        

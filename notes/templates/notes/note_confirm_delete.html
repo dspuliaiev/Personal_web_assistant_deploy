@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Подтверждение удаления</title>
+    <title>Confirm removal</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,11 +43,11 @@
 </head>
 <body>
     <div class="confirmation-container">
-        <h2>Ви впевнені, що хочете видалити цю нотатку?</h2>
+        <h2>Are you sure you want to delete this note?</h2>
         <form method="post">
             {% csrf_token %}
-            <button type="submit">Так, видалити</button>
-            <a href="{% url 'notes:note_list' %}">Вiдмiна</a> 
+            <button type="submit">Yes, delete</button>
+            <a href="{% url 'notes:note_list' %}">Cancel</a> 
         </form>
     </div>
 </body>
