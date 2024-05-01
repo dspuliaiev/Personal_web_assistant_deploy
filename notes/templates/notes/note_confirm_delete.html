@@ -1,55 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Confirm removal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            margin: 0;
-        }
-        .confirmation-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 20px auto;
-            text-align: center;
-        }
-        h2 {
-            color: #333;
-        }
-        button, a {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            cursor: pointer;
-            margin: 10px;
-            display: inline-block;
-        }
-        a {
-            background-color: #6c757d;
-        }
-        button:hover, a:hover {
-            opacity: 0.8;
-        }
-    </style>
-</head>
-<body>
+{% extends "contacts/base.html" %}
+
+{% block title %}Confirm Removal{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
     <div class="confirmation-container">
-        <h2>Are you sure you want to delete this note?</h2>
-        <form method="post">
+        <h2 class="text-center mb-4">Are you sure you want to delete this note?</h2>
+        <form method="post" class="d-flex justify-content-center">
             {% csrf_token %}
-            <button type="submit">Yes, delete</button>
-            <a href="{% url 'notes:note_list' %}">Cancel</a> 
+            <button type="submit" class="btn btn-danger me-2">Yes, delete</button>
+            <a href="{% url 'notes:note_list' %}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
-</body>
-</html>
-
+</div>
+{% endblock %}
