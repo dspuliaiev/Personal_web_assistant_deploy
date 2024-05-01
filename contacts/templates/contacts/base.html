@@ -10,6 +10,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="{% static 'contacts/styles.css'%}">
+    
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -67,6 +68,16 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
                         Upcoming birthdays
                     </a>
+                    <div class="sb-sidenav-menu-heading">NOTES</div>
+                    <a class="nav-link" href="{% url 'notes:note_list' %}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Note List
+                    </a>
+                    <a class="nav-link" href="{% url 'notes:note_create' %}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
+                        Create Note
+                    </a>
+
                     {% endif %}
                 </div>
             </div>

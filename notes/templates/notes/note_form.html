@@ -1,72 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Note form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            margin: 0;
-        }
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 20px auto;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        label {
-            margin-top: 10px;
-            display: block;
-            color: #666;
-        }
-        input[type="text"],
-        textarea {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box; 
-        }
-        button, .menu-link {
-            display: block;
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 20px;
-            width: calc(100% - 22px); /* Adjust width to fit form width */
-            text-align: center;
-            text-decoration: none; /* Remove underline from link */
-        }
-        button:hover, .menu-link:hover {
-            background-color: #4cae4c;
-        }
-    </style>
-</head>
-<body>
-<h2>Note form</h2>
-<form method="post">
-    {% csrf_token %}
-    <label for="id_title">Title</label>
-    {{ form.title }}
-    <label for="id_content">Contents</label>
-    {{ form.content }}
-    <label for="id_tags">Tags</label>
-    {{ form.tags }}
-    <button type="submit">Save</button>
-</form>
-<a href="{% url 'contacts:main' %}" class="menu-link">Main menu</a>
-</body>
-</html>
+{% extends "contacts/base.html" %}
 
+{% block title %}Create Note{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Create Note</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title.label_tag }} {{ form.title }}
+        {{ form.content.label_tag }} {{ form.content }}
+        {{ form.tags.label_tag }} {{ form.tags }}
+        <div style="color: red;">
+            {{ form.non_field_errors }}
+            {{ form.title.errors }}
+            {{ form.content.errors }}
+            {{ form.tags.errors }}
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'notes:note_list' %}" class="btn btn-light">Return</a>
+    </form>
+</div>
+{% endblock %}
