@@ -4,8 +4,8 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Upcoming birthdays</h2>
     <form method="get" action="{% url 'contacts:birthdays' %}" class="mb-4">
-        <input type="number" name="days_ahead" value="{{ request.GET.days_ahead }}" placeholder="Days ahead (default 30)" class="form-control mb-2">
-        <button type="submit" class="btn btn-primary btn-block">Search</button> {# Добавлен класс Bootstrap для кнопки поиска #}
+        <input type="number" name="days_ahead" value="{{ request.GET.days_ahead }}" placeholder="Days ahead (default 1)" class="form-control mb-2">
+        <button type="submit" class="btn btn-primary btn-block">Search</button> 
     </form>
 
     {% if birthdays %}
@@ -20,7 +20,7 @@
             <p>
                 {{ contact.email|truncatechars:30 }}
             </p>
-            <a href="{% url 'contacts:update' contact.id %}" class="btn btn-secondary btn-block">Edit</a> {# Добавлен класс Bootstrap для кнопки редактирования #}
+            <a href="{% url 'contacts:update' contact.id %}" class="btn btn-secondary btn-block">Edit</a> 
         </div>
         {% endfor %}
     </div>
