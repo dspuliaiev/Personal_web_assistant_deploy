@@ -76,11 +76,16 @@ class ContactUpcomingBirthdayListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         days_ahead = self.request.GET.get('days_ahead', 30)
+        if days_ahead == '':
+            days_ahead = 30  # Default value if empty string
+        else:
+            days_ahead = int(days_ahead)
         today = timezone.now().date()
-        end_date = today + timezone.timedelta(days=int(days_ahead))
+        end_date = today + timezone.timedelta(days=days_ahead)
         return Contact.objects.filter(
             Q(birthday__day__gte=today.day, birthday__month=today.month) |
             Q(birthday__day__lte=end_date.day, birthday__month=end_date.month),
             user=self.request.user
         )
+
 
