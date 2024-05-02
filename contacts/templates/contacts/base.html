@@ -50,6 +50,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Home
                     </a>
+                    {% if user.is_authenticated %}
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#contactsCollapse"
                        aria-expanded="false" aria-controls="contactsCollapse">
                         <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
@@ -65,7 +66,7 @@
                             <a class="nav-link" href="{% url 'contacts:birthdays' %}">Upcoming birthdays</a>
                         </nav>
                     </div>
-
+                                    
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#notesCollapse"
                        aria-expanded="false" aria-controls="notesCollapse">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
@@ -81,6 +82,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
             <div class="sb-sidenav-footer">
                 {% if user.is_authenticated %}
                     <div class="small">Logged in as: {{ user.username }}</div>
