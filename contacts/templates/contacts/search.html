@@ -4,12 +4,12 @@
 <div class="container mt-5">
     <h2 class="text-center mb-4">Search contacts</h2>
     <form method="get">
-        <input type="text" name="q" placeholder="Search..." class="form-control mb-2"> {# Добавлен класс Bootstrap для стилизации поля ввода #}
+        <input type="text" name="q" placeholder="Search..." class="form-control mb-2"> 
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
 
     {% if page_obj %}
-    <h3 class="mt-4">Search results:</h3> {# Добавлен отступ сверху для заголовка результатов поиска #}
+    <h3 class="mt-4">Search results:</h3> 
     <div class="list-group">
         {% for contact in page_obj %}
         <div class="list-group-item bg-light bg-gradient mb-2">
@@ -43,7 +43,7 @@
         </span>
     </div>
     {% else %}
-    <p class="mt-4">No contacts found.</p> {# Добавлен отступ сверху для сообщения об отсутствии результатов #}
+    <p class="mt-4">No contacts found.</p> 
     {% endif %}
 </div>
 {% endblock %}

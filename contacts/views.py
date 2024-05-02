@@ -1,11 +1,13 @@
+from datetime import timedelta
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, UpdateView, DeleteView, CreateView, TemplateView
-from django.urls import reverse_lazy
 from django.utils import timezone
-from .models import Contact
-from .forms import ContactForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.urls import reverse_lazy
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, TemplateView
+from .forms import ContactForm
+from .models import Contact
+
 
 class IndexView(TemplateView):
     template_name = 'contacts/index.html'
@@ -69,23 +71,32 @@ class ContactSearchResultsView(LoginRequiredMixin, ListView):
             )
         return Contact.objects.filter(user=self.request.user)
 
+
+
 class ContactUpcomingBirthdayListView(LoginRequiredMixin, ListView):
     model = Contact
     template_name = 'contacts/birthdays.html'
     context_object_name = 'birthdays'
 
     def get_queryset(self):
-        days_ahead = self.request.GET.get('days_ahead', 30)
-        if days_ahead == '':
-            days_ahead = 30  # Default value if empty string
+        queryset = Contact.objects.filter(user=self.request.user)
+        days_ahead = self.request.GET.get('days_ahead')
+
+        if days_ahead is None or days_ahead == '':
+            days_ahead = 1
         else:
-            days_ahead = int(days_ahead)
+            try:
+                days_ahead = int(days_ahead)
+            except ValueError:
+                days_ahead = 1
+
         today = timezone.now().date()
-        end_date = today + timezone.timedelta(days=days_ahead)
-        return Contact.objects.filter(
-            Q(birthday__day__gte=today.day, birthday__month=today.month) |
-            Q(birthday__day__lte=end_date.day, birthday__month=end_date.month),
-            user=self.request.user
+        target_date = today + timedelta(days=days_ahead)
+
+        queryset = queryset.filter(
+            birthday__day=target_date.day,
+            birthday__month=target_date.month
         )
 
+        return queryset
 

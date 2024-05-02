@@ -1,14 +1,14 @@
 {% extends "contacts/base.html" %}
 
 {% block content %}
-<div class="container mt-5"> {# Добавляем отступ сверху #}
-    <h2 class="text-center mb-4">Contacts list</h2> {# Выравниваем заголовок по центру и добавляем отступ снизу #}
+<div class="container mt-5"> 
+    <h2 class="text-center mb-4">Contacts list</h2> 
     <div class="col-3">
         {# <a href="{% url 'contacts:create' %}" class="btn btn-primary"> New contact </a> #}
     </div>
     <div class="list-group">
         {% for contact in list %}
-        <div class="list-group-item bg-light bg-gradient mb-2"> {# Добавляем отступ между контактами #}
+        <div class="list-group-item bg-light bg-gradient mb-2"> 
             <div>
                 <h5>{{ contact.first_name }} {{ contact.last_name }}</h5>
                 <p>Phone: {{ contact.phone_number }}</p>
