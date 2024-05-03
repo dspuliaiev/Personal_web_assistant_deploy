@@ -1,64 +1,52 @@
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .models import Note, Tag
 from .forms import NoteForm
-from django.core.paginator import Paginator
+from django.db import transaction
 
-# Create your views here.
-def note_list(request):
-    notes_list = Note.objects.all()
-    paginator = Paginator(notes_list, 10)  # Показывать по 10 заметок на странице
+class NoteListView(LoginRequiredMixin, ListView):
+    model = Note
+    template_name = 'notes/note_list.html'
+    context_object_name = 'notes'
+    paginate_by = 10
 
-    page_number = request.GET.get('page')
-    notes = paginator.get_page(page_number)
+    def get_queryset(self):
+        # Фильтруем заметки, чтобы показывать только заметки текущего пользователя
+        return Note.objects.filter(user=self.request.user)
 
-    return render(request, 'notes/note_list.html', {'notes': notes})
+class NoteCreateView(LoginRequiredMixin, CreateView):
+    model = Note
+    form_class = NoteForm
+    template_name = 'notes/note_form.html'
+    success_url = reverse_lazy('notes:note_list')
 
-def note_create(request):
-    if request.method == 'POST':
-        form = NoteForm(request.POST)
-        if form.is_valid():
-            note = form.save(commit=False)
-            note.save()
-            tag_names = form.cleaned_data['tags'].split(',')
-            for name in tag_names:
-                name = name.strip()
-                if name:
-                    tag, created = Tag.objects.get_or_create(name=name)
-                    note.tags.add(tag)
-            return redirect('notes:note_list')
-    else:
-        form = NoteForm()
-    return render(request, 'notes/note_form.html', {'form': form})
+    def get_form_kwargs(self):
+        # Удалите отправку 'user', если он не используется в форме
+        kwargs = super(NoteCreateView, self).get_form_kwargs()
+        return kwargs
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(NoteCreateView, self).form_valid(form)
 
 
-def note_update(request, pk):
-    note = get_object_or_404(Note, pk=pk)
-    if request.method == 'POST':
-        form = NoteForm(request.POST, instance=note)
-        if form.is_valid():
-            updated_note = form.save(commit=False)
-            updated_note.save()  
-            updated_note.tags.clear() 
+class NoteUpdateView(LoginRequiredMixin, UpdateView):
+    model = Note
+    form_class = NoteForm
+    template_name = 'notes/note_form.html'
+    success_url = reverse_lazy('notes:note_list')
 
-            tag_names = form.cleaned_data['tags'].split(',')
-            for name in tag_names:
-                name = name.strip()
-                if name:
-                    tag, created = Tag.objects.get_or_create(name=name)
-                    updated_note.tags.add(tag)
-            updated_note.save()  
-            return redirect('notes:note_list')
-    else:
-        form = NoteForm(instance=note)
+    def get_queryset(self):
+        # Пользователь может редактировать только свои заметки
+        return super().get_queryset().filter(user=self.request.user)
 
-    return render(request, 'notes/note_form.html', {'form': form, 'note': note})
+class NoteDeleteView(LoginRequiredMixin, DeleteView):
+    model = Note
+    template_name = 'notes/note_confirm_delete.html'
+    success_url = reverse_lazy('notes:note_list')
 
-
-
-def note_delete(request, pk):
-    note = get_object_or_404(Note, pk=pk)
-    if request.method == 'POST':
-        note.delete()
-        return redirect('notes:note_list')
-    return render(request, 'notes/note_confirm_delete.html', {'object': note})
+    def get_queryset(self):
+        # Пользователь может удалять только свои заметки
+        return super().get_queryset().filter(user=self.request.user)
