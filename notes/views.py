@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from .models import Note, Tag
 from .forms import NoteForm
 from django.db import transaction
+from django.db.models import Q
 
 class NoteListView(LoginRequiredMixin, ListView):
     model = Note
@@ -50,3 +51,31 @@ class NoteDeleteView(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         # Пользователь может удалять только свои заметки
         return super().get_queryset().filter(user=self.request.user)
+
+from django.views.generic import ListView
+from .models import Note, Tag
+
+class NoteSearchView(LoginRequiredMixin, ListView):
+    model = Note
+    template_name = 'notes/notes_search.html'
+    context_object_name = 'notes'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        tag_query = self.request.GET.get('tag')
+        queryset = Note.objects.filter(user=self.request.user)
+
+        if query:
+            queryset = queryset.filter(
+                Q(title__icontains=query) |
+                Q(content__icontains=query)
+            )
+
+        if tag_query:
+            queryset = queryset.filter(tags__name__icontains=tag_query)
+
+        return queryset.distinct()
+    def get_context_data(self, **kwargs):
+        context = super(NoteSearchView, self).get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()  # Предполагаем, что теги общедоступны
+        return context

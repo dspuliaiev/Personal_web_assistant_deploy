@@ -1,0 +1,14 @@
+{% extends "contacts/base.html" %}
+
+{% block content %}
+<h2>Search Results</h2>
+{% for note in notes %}
+    <div>
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.content }}</p>
+        <p>Tags: {{ note.tags.all|join:", " }}</p>
+    </div>
+{% empty %}
+    <p>No notes found.</p>
+{% endfor %}
+{% endblock %}
