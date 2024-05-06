@@ -11284,3 +11284,35 @@ body {
   color: white;
   border-color: #1e7e34;
 }
+.carousel-item img {
+    height: auto;
+    max-width: 100%;
+}
+@media screen and (max-width: 768px) {
+    .carousel-item img {
+        max-width: 100%; /* Максимальная ширина изображения - 100% родительского элемента */
+        height: auto; /* Высота автоматически подстраивается */
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .carousel-item img {
+        max-width: 100%; /* Максимальная ширина изображения - 50% родительского элемента */
+        height: auto; /* Высота автоматически подстраивается */
+    }
+}
+
+.carousel-caption {
+        bottom: 2%; /* Положение от нижнего края */
+        left: 50%; /* Положение по центру */
+        transform: translateX(-50%); /* Центрирование по горизонтали */
+        width: 100%; /* Ширина */
+        text-align: center; /* Выравнивание текста по центру */
+    }
+.carousel-caption p {
+        display: inline-block; /* Разрешить центрирование текста */
+        background-color: rgba(0, 0, 0, 0.5); /* Фон для прозрачности */
+        color: white; /* Цвет текста */
+        padding: 10px 20px; /* Внутренние отступы */
+        border-radius: 5px; /* Скругление углов */
+    }

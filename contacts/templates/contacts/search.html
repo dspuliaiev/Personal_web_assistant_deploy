@@ -25,7 +25,7 @@
         </div>
         {% endfor %}
     </div>
-    <div class="pagination mt-4"> {# Добавлен отступ сверху для блока пагинации #}
+    <div class="pagination mt-4"> 
         <span class="step-links">
             {% if page_obj.has_previous %}
             <a href="?q={{ request.GET.q }}&page=1">&laquo; first</a>
