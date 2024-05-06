@@ -115,12 +115,14 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 
 
 <script>
 
-    // Этот скрипт должен быть добавлен в ваш HTML-файл
+
     window.addEventListener('DOMContentLoaded', event => {
 
         // Toggle the side navigation
@@ -136,41 +138,6 @@
     });
 </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Обработчик для сворачивания/разворачивания подменю
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            var target = this.getAttribute('data-bs-target');
-            if (target) {
-                var collapse = document.querySelector(target);
-                if (collapse) {
-                    var isCollapsed = !collapse.classList.contains('show');
-                    if (isCollapsed) {
-                        collapse.classList.add('show');
-                        this.classList.remove('collapsed');
-                    } else {
-                        collapse.classList.remove('show');
-                        this.classList.add('collapsed');
-                    }
-                    e.preventDefault(); // Предотвращаем стандартное действие ссылки
-                }
-            }
-        });
-    });
-
-    // Обработчик для открытия ссылок
-    document.querySelectorAll('.nav-link[href]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Проверяем, является ли ссылка ссылкой, а не кнопкой, которая открывает подменю
-            if (this.classList.contains('collapsed')) {
-                e.preventDefault(); // Предотвращаем стандартное действие ссылки
-                window.location.href = this.getAttribute('href'); // Переходим по ссылке
-            }
-        });
-    });
-});
-</script>
 </body>
 </html>
 
