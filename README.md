@@ -8,7 +8,7 @@ The application allows you to store your contacts, adding notes, processing your
 * [Setup](#setup)
 
 ## General info
-This is your **personal** web-assistant that helps to organise:
+This is your personal virtual-assistant that helps you:
 * Storing contacts with names, addresses, phone numbers, emails, and birthdates.
 * Displaying a list of contacts with reminders for upcoming birthdays.
 * Validating phone numbers and emails for correctness.
@@ -29,22 +29,16 @@ Project is mainly based on:
 * Frontend: HTML/CSS, framework Bootstrap, JavaScript
 * Backend: Python
 
-
 ## Setup:
-
 * The first thing to do is to clone the repository:
-
 ```sh
-$ git clone https://github.com/alenaporoskun/Group5_Personal_Assistant
-```
+$ git clone https://github.com/alenaporoskun/Group5_Personal_Assistant```
 
 Activate your virtual environment and install the dependencies by running the following commands:
-
 ```sh
 $ poetry shell
 (env)$ poetry install
 ```
-
 * Create a .env file in the root directory of your project and populate it with key-value pairs as shown in the example below:
 ```sh
 DATABASE_NAME=postgres
@@ -57,18 +51,16 @@ SECRET_KEY='key'
 
 CLOUDINARY_NAME=name
 CLOUDINARY_API_KEY=key
-CLOUDINARY_API_SECRET=secret
-```
+CLOUDINARY_API_SECRET=secret```
 
 ```sh
 First terminal:
-(env)$ python docker-compose up
-```
+(env)$ python docker-compose up```
 
 ```sh
 Second terminal:
 (env)$ python manage.py migrate
-(env)$ python manage.py runserver     
+(env)$ python manage.py runserver   
 ```
 
  Open `http://localhost:8000` in a browser. You should see the main page.
