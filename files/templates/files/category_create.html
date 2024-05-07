@@ -1,0 +1,21 @@
+{% extends "contacts/base.html" %}
+
+{% block title %}Create category{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Create category</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.name.label_tag }} {{ form.name }}
+        <div style="color: red;">
+            {{ form.name.errors }}
+        </div>
+        <br>
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'files:categories' %}" class="btn btn-light">Return</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
