@@ -1,0 +1,28 @@
+{% extends "contacts/base.html" %}
+
+{% load cloudinary %}
+
+{% block title %}Upload a new file{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Upload a new file</h3>
+    <div id='backend_upload'>
+       <form action="{% url 'files:create' %}" method="post" enctype="multipart/form-data">
+           {% csrf_token %}
+           {{ backend_form }}
+           <br>
+           <div align="center">Select the category:
+            <select name="categories" required>
+                {% for category in categories %}
+                <option value="{{category.name}}">{{category.name}}</option>
+                {% endfor %}
+            </select><br>
+            <input type="submit" value="Upload"> 
+            </div>
+       </form>
+    </div>  
+    <br><br>
+    <center><a href="/files" class="btn btn-primary">Return to Files</a></center>
+</div>
+{% endblock %}

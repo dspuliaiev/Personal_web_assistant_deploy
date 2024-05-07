@@ -1,0 +1,14 @@
+{% extends "contacts/base.html" %}
+
+{% block title %}Download file{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <p>The file {{ file.name_file }} has been downloaded.</p>
+    <br><br>
+    <div align="center">
+	<a href="/files/" class="btn btn-primary">Files</a>
+        <a href="{% url 'files:categories' %}" class="btn btn-primary">Categories</a>
+    </div>
+</div>
+{% endblock %}
