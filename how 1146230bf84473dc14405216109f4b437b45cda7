@@ -1,0 +1,361 @@
+[33mcommit 1146230bf84473dc14405216109f4b437b45cda7[m[33m ([m[1;36mHEAD -> [m[1;32madded-weather-forecast[m[33m, [m[1;31morigin/added-weather-forecast[m[33m)[m
+Author: AlexVS195 <142892792+AlexVS195@users.noreply.github.com>
+Date:   Tue May 7 15:47:54 2024 +0300
+
+    weather forecast
+
+[33mcommit 23ea8f846279367de2a58a03d10b710b82e5f1d5[m
+Merge: 183fc0d 67e7ab0
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Mon May 6 14:54:49 2024 +0300
+
+    Merge pull request #22 from alenaporoskun/new_index
+    
+    new_index
+
+[33mcommit 67e7ab01430a90ebdc43ae5fada4dc54a7671d88[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Mon May 6 14:41:07 2024 +0300
+
+    new_index
+
+[33mcommit 183fc0d76f86ca9463a689468ba2064307a895a2[m
+Merge: e7cba71 543c1d7
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Fri May 3 21:09:11 2024 +0300
+
+    Merge pull request #20 from alenaporoskun/personalized-notes,-and-improving-tags
+    
+    Personalized notes, and improving tags and search button
+
+[33mcommit 543c1d729bd396b6725b5c42ca227951870c92ae[m
+Author: SloTGreaD <148031433+SloTGreaD@users.noreply.github.com>
+Date:   Sat May 4 01:09:33 2024 +0800
+
+    Add files via upload
+
+[33mcommit ffd6a99c4de371e5d07c0dec9cec3727e2cb6dae[m
+Author: SloTGreaD <148031433+SloTGreaD@users.noreply.github.com>
+Date:   Fri May 3 17:39:07 2024 +0800
+
+    Add files via upload
+
+[33mcommit e7cba713ebb24879d4d0c2592a8689ef7ffe1940[m
+Merge: 9fd8c5d 48d91d5
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Thu May 2 21:49:58 2024 +0300
+
+    Merge pull request #17 from alenaporoskun/update_front_and_birthdays
+    
+    Update front and birthdays
+
+[33mcommit 48d91d5973b74e9c95d35da4064e1f2b1b758517[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Thu May 2 21:35:39 2024 +0300
+
+    update_front
+
+[33mcommit 6dac769a8c1dd5de03247d13087b2915d4b2f491[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Thu May 2 20:54:48 2024 +0300
+
+    update front and birthdays
+
+[33mcommit 30abc8a3577b964e1168828450bbbc78c64d9a74[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Thu May 2 14:28:53 2024 +0300
+
+    update_front_and_birthdays
+
+[33mcommit 9fd8c5de66f4a2de83ed19bb7a6b788188956927[m
+Merge: 6d307ab acf139f
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Wed May 1 22:04:20 2024 +0300
+
+    Merge pull request #14 from alenaporoskun/Notes-new-design
+    
+    New design for notes
+
+[33mcommit acf139fb96339d559b2304b2ccdba8479d461fc1[m
+Author: SloTGreaD <148031433+SloTGreaD@users.noreply.github.com>
+Date:   Thu May 2 00:13:01 2024 +0800
+
+    Add files via upload
+
+[33mcommit 6d307ab8890a5e546daabfd19bf74d79f80b00c8[m[33m ([m[1;31morigin/front[m[33m)[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Tue Apr 30 18:10:57 2024 +0300
+
+    front
+
+[33mcommit 1ee689d3f809def0d34de0c0b21e3210b2cea434[m
+Merge: f5069e4 fa0eb7c
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Tue Apr 30 12:18:51 2024 +0300
+
+    Merge pull request #9 from alenaporoskun/notes
+    
+    Notes
+
+[33mcommit fa0eb7c8e368cd11eb9198605cdffee10f848e6b[m[33m ([m[1;31morigin/notes[m[33m)[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Tue Apr 30 12:17:23 2024 +0300
+
+    Update settings.py
+
+[33mcommit 325245bb1ad1166bdf78560b89d2c092b422cf95[m
+Author: SloTGreaD <148031433+SloTGreaD@users.noreply.github.com>
+Date:   Tue Apr 30 16:02:28 2024 +0800
+
+    Add files via upload
+
+[33mcommit d849f811c06c2e7ada09e3f293fce7667b1c7b28[m
+Author: SloTGreaD <148031433+SloTGreaD@users.noreply.github.com>
+Date:   Tue Apr 30 15:43:42 2024 +0800
+
+    Delete base.html
+
+[33mcommit ead806be366208ad9a16bf176fca7cea7e4237b8[m
+Author: SloTGreaD <148031433+SloTGreaD@users.noreply.github.com>
+Date:   Tue Apr 30 15:42:50 2024 +0800
+
+    Add files via upload
+
+[33mcommit 71d7beee744dbc8bd90242f43ccb76291136fda0[m
+Author: SloTGreaD <148031433+SloTGreaD@users.noreply.github.com>
+Date:   Tue Apr 30 15:06:33 2024 +0800
+
+    Add files via upload
+
+[33mcommit f5069e49b3f7f184e1d4ca2909bbc9a4d54b3a1c[m[33m ([m[1;31morigin/SloTGreaD-patch-2[m[33m, [m[1;31morigin/SloTGreaD-patch-1[m[33m)[m
+Merge: aec6e1f e4c1d9f
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Mon Apr 29 17:13:28 2024 +0300
+
+    Merge pull request #5 from alenaporoskun/update_contacts
+    
+    update_contacts
+
+[33mcommit e4c1d9fc1f59a8ad5b25606e011a3b0743654d75[m[33m ([m[1;31morigin/update_contacts[m[33m)[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Mon Apr 29 16:41:20 2024 +0300
+
+    update_contacts
+
+[33mcommit aec6e1f90987e5a68d8297d08c0f35e79b79e34d[m
+Merge: 1da8816 ce8758c
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Sun Apr 28 17:51:11 2024 +0300
+
+    Merge pull request #4 from alenaporoskun/users
+    
+    Authorization
+
+[33mcommit ce8758cd9a1fc0c4babd42c651d2e5052281d273[m[33m ([m[1;31morigin/users[m[33m)[m
+Author: Yurii Kovalenko <yuriy.kovalenko.in@gmail.com>
+Date:   Sun Apr 28 16:00:46 2024 +0300
+
+    Authorization
+
+[33mcommit 1da881612825209153693929bd3ebc7313f96e03[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Sun Apr 28 12:38:33 2024 +0300
+
+    urls
+
+[33mcommit ba4be8453b58d3cd23a7fa44f54d51d21da19801[m
+Merge: bf77aea 5def13d
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Sun Apr 28 12:25:38 2024 +0300
+
+    Merge pull request #3 from alenaporoskun/contacts_url
+    
+    Contacts url
+
+[33mcommit 5def13df01413be4d9ff46c085cbc237ab99da9e[m[33m ([m[1;31morigin/contacts_url[m[33m)[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Sun Apr 28 12:25:09 2024 +0300
+
+    Delete .idea/vcs.xml
+
+[33mcommit 815e0c6a28b9fa3d48aa3d580b6fe0097f9ac716[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Sun Apr 28 12:23:25 2024 +0300
+
+    Delete .idea/modules.xml
+
+[33mcommit d3e0567626c884d342d787769a2f1c9c756fe89a[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Sun Apr 28 12:23:17 2024 +0300
+
+    Delete .idea/misc.xml
+
+[33mcommit 0c0df02d3ad5a2f46b71e29d0d619a6f3c1cae49[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Sun Apr 28 12:23:10 2024 +0300
+
+    Delete .idea/inspectionProfiles/profiles_settings.xml
+
+[33mcommit 8d8925951760eb1bd97a305013226abe471751f8[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Sun Apr 28 12:22:58 2024 +0300
+
+    Delete .idea/Group5_Personal_Assistant.iml
+
+[33mcommit a629e50bff576ea75bfdae839cdc30b4c155e47a[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Sun Apr 28 12:22:49 2024 +0300
+
+    Delete .idea/.gitignore
+
+[33mcommit ca10205fa7afb6fe7c2f2cdf1b636da821abc947[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Sun Apr 28 12:10:07 2024 +0300
+
+    contacts_urls
+
+[33mcommit afaeb68b49c54dcd862e61f9c1b29579c6f7714f[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Sun Apr 28 12:01:55 2024 +0300
+
+    add contacts_urls
+
+[33mcommit bf77aea21a8fcb1d654b5882660d6e026be379b7[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Sat Apr 27 17:40:47 2024 +0300
+
+    contacts -> url+sett2
+
+[33mcommit 409aa11fd84a07ba6eb13ff69eb2a837c74a41c7[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Sat Apr 27 17:34:12 2024 +0300
+
+    contacts -> url+sett
+
+[33mcommit 1edefe9c0958db416b9547ee68869ee6e98fb246[m
+Merge: 2ccc9ab bef1f5e
+Author: dspuliaiev <138687907+dspuliaiev@users.noreply.github.com>
+Date:   Sat Apr 27 17:05:00 2024 +0300
+
+    Merge pull request #2 from alenaporoskun/contacts
+    
+    Contacts
+
+[33mcommit bef1f5e0d3a5b30816dc9cc26e5a5388555626ba[m[33m ([m[1;31morigin/contacts[m[33m)[m
+Merge: e9b4803 2ccc9ab
+Author: dspuliaiev <138687907+dspuliaiev@users.noreply.github.com>
+Date:   Sat Apr 27 16:57:16 2024 +0300
+
+    Merge pull request #1 from alenaporoskun/main
+    
+    Contacts
+
+[33mcommit e9b4803bc006b218c68765e2ec5d81b07f92aa2e[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Sat Apr 27 14:40:54 2024 +0300
+
+    Contacts
+
+[33mcommit 474b8115007136fed300e22c69870b3bc798a70e[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Sat Apr 27 14:29:26 2024 +0300
+
+    Contacts
+
+[33mcommit 2ccc9ab0b4c8981d863c72a8a0ce37222bc0a8ab[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Sat Apr 27 13:19:15 2024 +0300
+
+    changes in structure2
+
+[33mcommit 06d82a50a9866f534ca70145f3b00afafefa9517[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Sat Apr 27 12:57:33 2024 +0300
+
+    changes in structure
+
+[33mcommit 6a0b5c2af7cdb5abd572a7dc324052fcb89bbf99[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Sat Apr 27 10:59:43 2024 +0300
+
+    changes in settings.py,
+
+[33mcommit 8056904e2eeee81af3e83bd67ed559f885d241ff[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Fri Apr 26 20:20:59 2024 +0300
+
+    new structure2
+
+[33mcommit 57d48b760b9ac194b6f41076483061ce487df50a[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Fri Apr 26 20:18:45 2024 +0300
+
+    Update README.md
+
+[33mcommit f1a5ef23e503b5ba875ab914d9fcd4efc74baae7[m
+Merge: be2aadd 3be0c4c
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Fri Apr 26 20:18:08 2024 +0300
+
+    new structure
+
+[33mcommit be2aadd1959e983b622eef3f744c039b79b36989[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Fri Apr 26 20:16:38 2024 +0300
+
+    new structure
+
+[33mcommit 3be0c4c8e3fe8f6814d0bc7b32e406ae8fd7606a[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Fri Apr 26 20:15:35 2024 +0300
+
+    Delete project_poetry directory
+
+[33mcommit 86bdd483ea7fcc91151116d42f975e313643d04a[m
+Merge: 4887db2 c09f772
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Fri Apr 26 15:14:18 2024 +0300
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 4887db223b9f684c924e2aa9d9bca1d746b7bee7[m
+Author: dspuliaiev <d.s.puliaiev@gmail.com>
+Date:   Fri Apr 26 15:14:02 2024 +0300
+
+    Test Init
+
+[33mcommit e3bfd18c2e967b2285923d74652c0200a192d4d7[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Fri Apr 26 13:55:09 2024 +0300
+
+    4 коміт
+
+[33mcommit c09f772b907d82e6848c1d23b5e18ed2b8772c4b[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Fri Apr 26 13:55:09 2024 +0300
+
+    4 коміт
+
+[33mcommit fc84823455563bcf99f40242f5a92df3d8d2f944[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Fri Apr 26 13:06:58 2024 +0300
+
+    3 коміт
+
+[33mcommit 720a31bd9985daabedce0128a5203db8ef4520fc[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Fri Apr 26 13:04:57 2024 +0300
+
+    2 коміт
+
+[33mcommit 9286a6960963489fcc85579cc1b5186a59972ac5[m
+Author: Olena Poroskun <alenka200124@gmail.com>
+Date:   Fri Apr 26 12:58:55 2024 +0300
+
+    Перший коміт
+
+[33mcommit bb1f5844d3d0f856b8f3a1aa56ad355253fcbfae[m
+Author: Olena Poroskun <56368022+alenaporoskun@users.noreply.github.com>
+Date:   Fri Apr 26 12:56:20 2024 +0300
+
+    Create README.md
