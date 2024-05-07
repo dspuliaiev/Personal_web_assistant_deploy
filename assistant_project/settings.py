@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'notes',
     'weather',
     'files',
+    'news_scraping',
 ]
 
 MIDDLEWARE = [
