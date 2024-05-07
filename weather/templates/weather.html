@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <style>
+        /* CSS для стилізації фону */
+        body {
+            background-color: #cfe2f3; /* Блакитний колір фону */
+            font-family: Arial, sans-serif; /* Використовуйте шрифт Arial або подібний */
+        }
+
+        /* CSS для контейнера заголовка та інформації про погоду */
+        .container {
+            display: flex; /* Встановіть властивість flex для розміщення елементів в ряд */
+            justify-content: flex-end; /* Вирівняйте елементи по правому краю */
+            margin: 50px; /* Зазначте зовнішні відступи */
+        }
+
+        /* CSS для блоку з інформацією про погоду */
+        .weather-info {
+            background-color: white; /* Білий колір фону */
+            padding: 20px; /* Додайте внутрішні відступи */
+            border-radius: 10px; /* Закруглені кути */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тінь блоку */
+            margin-right: 20px; /* Зазначте відступ з правого боку */
+        }
+
+        /* CSS для форми вводу міста */
+        form {
+            margin-bottom: 20px; /* Зазначте відступ від нижнього краю */
+        }
+
+        /* CSS для кнопки "Get Weather" */
+        button {
+            background-color: #4CAF50; /* Зелений колір фону */
+            color: white; /* Білий колір тексту */
+            padding: 10px 20px; /* Розміри кнопки */
+            border: none; /* Видаліть границю */
+            border-radius: 5px; /* Закруглені кути */
+            cursor: pointer; /* Змініть вигляд курсору при наведенні */
+        }
+
+        /* CSS для відображення тексту помилки */
+        .error-message {
+            color: red; /* Червоний колір тексту */
+            margin-top: 10px; /* Зазначте відступ від верхнього краю */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="weather-info">
+            <h2>Weather Forecast</h2>
+            <form action="{% url 'weather' %}" method="GET">
+                <label for="city">Enter city name:</label>
+                <input type="text" id="city" name="city">
+                <button type="submit">Get Weather</button>
+            </form>
+
+            {% if weather %}
+                <h3>Weather forecast for {{ city }}</h3>
+                <p>Time: {{ weather.time }}</p>
+                <p>Sky condition: {{ weather.title }}</p>
+                <p>Temperature (°C): {{ weather.temperature }}</p>
+                <p>Humidity (%): {{ weather.humidity }}</p>
+                <p>Wind speed (m/s): {{ weather.wind_speed }}</p>
+                <p>Wind direction: {{ weather.wind_dir }}</p>
+            {% else %}
+                <p class="error-message">No weather data available for the specified city.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
