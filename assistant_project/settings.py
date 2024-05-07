@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import environ
 import cloudinary
@@ -70,11 +71,11 @@ WSGI_APPLICATION = 'assistant_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST'),
-        'PORT': env('DATABASE_PORT'),
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'PORT': os.environ.get('DATABASE_PORT'),
+        'HOST': os.environ.get('DATABASE_DOMAIN'),
     }
 }
 

@@ -60,7 +60,7 @@
                     <div class="collapse" id="contactsCollapse" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{% url 'contacts:list' %}">Contacts List</a>
+                            <a class="nav-link" href="{% url 'contacts:list' %}">Contacts list</a>
                             <a class="nav-link" href="{% url 'contacts:create' %}">Create contact</a>
                             <a class="nav-link" href="{% url 'contacts:search' %}">Search contacts</a>
                             <a class="nav-link" href="{% url 'contacts:birthdays' %}">Upcoming birthdays</a>
@@ -76,9 +76,23 @@
                     <div class="collapse" id="notesCollapse" aria-labelledby="headingTwo"
                          data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="{% url 'notes:note_list' %}">Note List</a>
-                            <a class="nav-link" href="{% url 'notes:note_create' %}">Create Note</a>
-                            <a class="nav-link" href="{% url 'notes:note_search' %}">Search Notes</a>
+                            <a class="nav-link" href="{% url 'notes:note_list' %}">Notes list</a>
+                            <a class="nav-link" href="{% url 'notes:note_create' %}">Create note</a>
+                            <a class="nav-link" href="{% url 'notes:note_search' %}">Search notes</a>
+                        </nav>
+                    </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#filesCollapse"
+                       aria-expanded="false" aria-controls="filesCollapse">
+                        <div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>
+                        Files
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="filesCollapse" aria-labelledby="headingThree"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'files:category_create' %}">Files category</a>
+                            <a class="nav-link" href="{% url 'files:files' %}">Files list</a>
+                            <a class="nav-link" href="{% url 'files:create' %}">Files upload</a>                           
                         </nav>
                     </div>
                 </div>
