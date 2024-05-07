@@ -17,7 +17,7 @@ This is your personal virtual-assistant that helps you:
 * Storing and searching notes with textual information and the ability to add tags.
 * Uploading user files to a cloud service and sorting them by categories.
 * Displaying weather information.
-* 
+
 Regarding authentication:
 * Implemented user authentication mechanism with restricted access to functions.
 * Ensured users only have access to their own data and files.
