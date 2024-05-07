@@ -31,16 +31,17 @@ Project is mainly based on:
 
 ## Setup:
 * The first thing to do is to clone the repository:
-```sh
-$ git clone https://github.com/alenaporoskun/Group5_Personal_Assistant```
+```
+$ git clone https://github.com/alenaporoskun/Group5_Personal_Assistant
+```
 
 Activate your virtual environment and install the dependencies by running the following commands:
-```sh
+```
 $ poetry shell
 (env)$ poetry install
 ```
 * Create a .env file in the root directory of your project and populate it with key-value pairs as shown in the example below:
-```sh
+```
 DATABASE_NAME=postgres
 DATABASE_USER=postgres
 DATABASE_PASSWORD=pass
@@ -51,13 +52,15 @@ SECRET_KEY='key'
 
 CLOUDINARY_NAME=name
 CLOUDINARY_API_KEY=key
-CLOUDINARY_API_SECRET=secret```
+CLOUDINARY_API_SECRET=secret
+```
 
-```sh
+```
 First terminal:
-(env)$ python docker-compose up```
+(env)$ python docker-compose up
+```
 
-```sh
+```
 Second terminal:
 (env)$ python manage.py migrate
 (env)$ python manage.py runserver   
