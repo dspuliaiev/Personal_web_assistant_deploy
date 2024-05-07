@@ -23,5 +23,5 @@ class WeatherView(TemplateView):
         city = self.request.GET.get('city', 'Kyiv')  # We get the name of the city from the GET parameter 'city', if not specified, we use 'Kyiv' by default
         weather_data = get_weather(city)  # We receive weather data for the specified city
         context['weather'] = weather_data  # Adding weather data to context
-        context['city'] = city
+        context['city'] = city  # Adding city name to context
         return context
