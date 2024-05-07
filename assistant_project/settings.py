@@ -1,5 +1,10 @@
+import os
 from pathlib import Path
 import environ
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,10 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'contacts',
     'users',
     'notes',
     'weather',
+    'files',
 ]
 
 MIDDLEWARE = [
@@ -65,11 +72,11 @@ WSGI_APPLICATION = 'assistant_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': env('DATABASE_HOST'),
-        'PORT': env('DATABASE_PORT'),
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'PORT': os.environ.get('DATABASE_PORT'),
+        'HOST': os.environ.get('DATABASE_DOMAIN'),
     }
 }
 
@@ -115,6 +122,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # Email settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -126,3 +134,16 @@ EMAIL_USE_TLS = False
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+# Cloudinary settings
+
+CLOUDINARY_NAME=env('CLOUDINARY_NAME')
+CLOUDINARY_API_KEY=env('CLOUDINARY_API_KEY')
+CLOUDINARY_API_SECRET=env('CLOUDINARY_API_SECRET')
+
+cloudinary.config(
+    cloud_name=CLOUDINARY_NAME,
+    api_key=CLOUDINARY_API_KEY,
+    api_secret=CLOUDINARY_API_SECRET
+)

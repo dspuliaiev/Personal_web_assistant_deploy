@@ -1,0 +1,24 @@
+{% extends "contacts/base.html" %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Categories</h3>
+    <div class="list-group">
+        {% for category in categories %}
+            <table><tr><td width="50%">
+            <div class="list-group-item bg-light bg-gradient mb-2">
+                {{ category.name }}
+            </div></td><td width="50%">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/files/category_delete/{{ category.id }}" class="btn btn-primary">Delete category</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'files:files_id' category.id %}" class="btn btn-primary">Files of this category</a>
+            </td></tr></table>
+        {% endfor %}
+    </div>
+    <br>
+    <div align="center">
+        <a href="{% url 'files:category_create' %}" class="btn btn-primary"> New category</a>
+    </div>
+</div>
+{% endblock %}

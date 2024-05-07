@@ -20,10 +20,10 @@ from django.views.generic import TemplateView
 from weather.views import WeatherView, weather, weather_view
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='contacts/index.html'), name='index'),
-    path('contacts/', include('contacts.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('contacts.urls')),
     path('users/', include('users.urls')),
     path('notes/', include('notes.urls')),
-    path('admin/', admin.site.urls),
+    path('files/', include('files.urls')),
     path('weather/', WeatherView.as_view(), name='weather'),
 ]
