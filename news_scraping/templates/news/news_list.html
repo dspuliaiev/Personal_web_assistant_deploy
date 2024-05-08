@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News List</title>
+    <!-- Including a static JavaScript file -->
+    {% load static %}
+    <script src="{% static 'js/auto_refresh.js' %}"></script>
+    <style>
+        /* Add your custom styles here */
+        h1 {
+            font-family: Arial, sans-serif; /* Replace with your desired font */
+            color: #333; /* Replace with your desired text color */
+        }
+        h2 {
+            font-family: Arial, sans-serif; /* Replace with your desired font */
+            color: #555; /* Replace with your desired text color */
+        }
+        p {
+            font-family: Arial, sans-serif; /* Replace with your desired font */
+            color: #777; /* Replace with your desired text color */
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination li a {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+        }
+        .pagination li.active a {
+            background-color: #333;
+            color: #fff;
+        }
+        .pagination li.disabled span {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daily news</h1>
+    <form method="get" action=".">
+        <input type="text" name="keyword" value="{{ keyword }}">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if news_list %}
+        {% for news_item in news_list %}
+            <h2>{{ news_item.title }}</h2>
+            <p>{{ news_item.description }}</p>
+            <a href="{{ news_item.link }}">Read more</a>
+        {% endfor %}
+
+        {% if news_list.has_other_pages %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    {% if news_list.has_previous %}
+                        <li><a href="?page={{ news_list.previous_page_number }}{% if keyword %}&keyword={{ keyword }}{% endif %}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in news_list.paginator.page_range %}
+                        {% if news_list.number == i %}
+                            <li class="active"><span>{{ i }}</span></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}{% if keyword %}&keyword={{ keyword }}{% endif %}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if news_list.has_next %}
+                        <li><a href="?page={{ news_list.next_page_number }}{% if keyword %}&keyword={{ keyword }}{% endif %}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    {% else %}
+        <p>There are currently no news related to your request.</p>
+    {% endif %}
+</body>
+</html>
