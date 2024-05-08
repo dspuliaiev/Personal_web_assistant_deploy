@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from news_scraping import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +25,5 @@ urlpatterns = [
     path('notes/', include('notes.urls')),
     path('files/', include('files.urls')),
     path('weather/', include('weather.urls')),
-    path('news/', include('news_scraping.urls')),
+    path('news/', views.news_list, name='news'),
 ]
