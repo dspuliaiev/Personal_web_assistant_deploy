@@ -24,4 +24,5 @@ urlpatterns = [
     path('notes/', include('notes.urls')),
     path('files/', include('files.urls')),
     path('weather/', include('weather.urls')),
+    path('news/', include('news_scraping.urls')),
 ]

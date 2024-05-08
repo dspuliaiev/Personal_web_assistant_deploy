@@ -1,37 +1,62 @@
-from django.shortcuts import render
+import requests
 from bs4 import BeautifulSoup
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import requests
+from django.shortcuts import render
+from html import unescape
+from html.parser import HTMLParser
 
-def fetch_pravda_news(keyword):
-    url = 'https://www.pravda.com.ua/rss/'
-    response = requests.get(url)
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.content, 'xml')
-        items = soup.find_all('item')
-        news = []
-        for item in items:
-            title = item.find('title')
-            if title and (keyword is None or keyword.lower() in title.text.lower()):  # We check that the title exists and filter the news by keyword
-                link = item.find('link').text
-                description = item.find('description').text
-                news.append({'title': title.text, 'link': link, 'description': description})
-        return news
-    else:
-        print("Failed to fetch news from Pravda.com.ua RSS feed.")
-        return []
+class MLStripper(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.reset()
+        self.strict = False
+        self.convert_charrefs= True
+        self.fed = []
+    def handle_data(self, d):
+        self.fed.append(d)
+    def get_data(self):
+        return ''.join(self.fed)
+
+def strip_tags(html):
+    s = MLStripper()
+    s.feed(html)
+    return s.get_data()
+
+def fetch_news(keyword, urls):
+    news = []
+    for url in urls:
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'xml')
+            items = soup.find_all('item')
+            for item in items:
+                title = item.find('title')
+                if title and (keyword is None or keyword.lower() in title.text.lower()):
+                    link = item.find('link').text
+                    description = item.find('description').text
+                    if description:
+                        description = strip_tags(description)
+                        description = unescape(description)
+                    news.append({'title': title.text, 'link': link, 'description': description})
+        else:
+            print(f"Failed to fetch news from {url} RSS feed.")
+    return news
 
 def news_list(request):
     keyword = request.GET.get('keyword')
+    urls = [
+        'https://www.pravda.com.ua/rss/',
+        'https://bin.ua/news/rss.xml',
+        'https://rbc.ua/static/rss/all.ukr.rss.xml',
+        'https://inform-ua.info/feed/rss/v1'
+    ]
     if keyword:
-        pravda_news = fetch_pravda_news(keyword)
+        all_news = fetch_news(keyword, urls)
     else:
-        pravda_news = fetch_pravda_news('')  # We don't pass an argument to get all the news
-
+        all_news = fetch_news(None, urls)
 
     # Pagination
-    from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-    paginator = Paginator(pravda_news, 10)  # Show 10 news per page
+    paginator = Paginator(all_news, 10)  # Show 10 news per page
     page = request.GET.get('page')
     try:
         news_list = paginator.page(page)
@@ -46,6 +71,5 @@ def news_list(request):
         'news_list': news_list,
         'keyword': keyword
     }
-
 
     return render(request, 'news/news_list.html', context)
