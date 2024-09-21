@@ -24,6 +24,7 @@ CSRF_TRUSTED_ORIGINS = [ 'http://127.0.0.1',  'https://.railway.app', 'https://.
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.staticfiles'
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
