@@ -47,4 +47,4 @@ COPY --from=builder /usr/local /usr/local
 COPY . /app/
 
 # Command to run Django using Gunicorn
-CMD ["gunicorn", "--timeout", "120", "My_portfolio.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "--timeout", "120", "assistant_project.wsgi:application", "--bind", "0.0.0.0:8000"]
