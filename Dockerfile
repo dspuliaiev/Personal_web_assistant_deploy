@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential libpq-dev zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Optionally, try upgrading libpq-dev if needed for SNI support
+RUN apt-get update && apt-get install -y libpq5
+
 # Set the working directory
 WORKDIR /app
 
@@ -36,6 +39,9 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev zlib1g \
     && rm -rf /var/lib/apt/lists/*
+
+# Optionally, try upgrading libpq-dev in the runtime environment as well
+RUN apt-get update && apt-get install -y libpq5
 
 # Set the working directory
 WORKDIR /app
