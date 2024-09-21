@@ -15,9 +15,10 @@ environ.Env.read_env(BASE_DIR / '.env')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', ".railway.app", '.koyeb.app']
+CSRF_TRUSTED_ORIGINS = [ 'http://127.0.0.1',  'https://.railway.app', 'https://.koyeb.app']
 
 # Application definition
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,7 +54,7 @@ ROOT_URLCONF = 'assistant_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,6 +120,8 @@ STATIC_URL = "static/"
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -148,3 +152,24 @@ cloudinary.config(
     api_key=CLOUDINARY_API_KEY,
     api_secret=CLOUDINARY_API_SECRET
 )
+
+LOGGING = {
+     'version': 1,
+     'disable_existing_loggers': False,
+     'handlers': {
+         'console': {
+             'class': 'logging.StreamHandler',
+         },
+     },
+     'root': {
+         'handlers': ['console'],
+         'level': 'DEBUG',
+     },
+     'loggers': {
+         'django': {
+             'handlers': ['console'],
+             'level': 'DEBUG',
+             'propagate': True,
+         },
+     },
+ }
