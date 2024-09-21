@@ -85,7 +85,7 @@ DATABASES = {
         'PORT': getenv('PGPORT', 5432),
         'OPTIONS': {
             'sslmode': 'require',
-            'options': getenv('PGOPTIONS'),
+            'options': f"-c options='-c search_path=public -c endpoint={getenv('PGENDPOINT')}'",
         },
     }
 }
