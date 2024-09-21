@@ -2,11 +2,11 @@
 name = "project-poetry"
 version = "0.1.0"
 description = ""
-authors = ["Olena Poroskun <alenka200124@gmail.com>"]
+authors = ["d.s.puliaiev@gmail.com"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 django = "^5.0.4"
 psycopg2 = "^2.9.9"
 django-environ = "^0.11.2"
