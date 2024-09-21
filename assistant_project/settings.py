@@ -77,15 +77,15 @@ WSGI_APPLICATION = 'assistant_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': getenv('PGDATABASE'),
         'USER': getenv('PGUSER'),
         'PASSWORD': getenv('PGPASSWORD'),
         'HOST': getenv('PGHOST'),
-        'PORT': getenv('PGPORT', 5432),
+        'PORT': 5432,
+        'PGENDPOINT': getenv('PGENDPOINT'),
         'OPTIONS': {
             'sslmode': 'require',
-            'options': f"-c options='-c search_path=public -c endpoint={getenv('PGENDPOINT')}'",
         },
     }
 }
