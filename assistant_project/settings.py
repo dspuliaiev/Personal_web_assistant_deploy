@@ -20,8 +20,8 @@ SECRET_KEY = getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.railway.app', '.koyeb.app', '.console.neon.tech']
-CSRF_TRUSTED_ORIGINS = [ 'http://127.0.0.1',  'https://.railway.app', 'https://.koyeb.app', 'https://console.neon.tech']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.personal-assistant.koyeb.app', '.console.neon.tech']
+CSRF_TRUSTED_ORIGINS = [ 'http://127.0.0.1',  'https://personal-assistant.koyeb.app', 'https://console.neon.tech']
 
 # Application definition
 
