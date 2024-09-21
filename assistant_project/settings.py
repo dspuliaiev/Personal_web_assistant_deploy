@@ -6,6 +6,7 @@ import cloudinary.uploader
 import cloudinary.api
 from dotenv import load_dotenv
 from os import getenv
+import dj_database_url
 
 load_dotenv()
 
@@ -76,18 +77,7 @@ WSGI_APPLICATION = 'assistant_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': getenv('PGDATABASE'),
-        'USER': getenv('PGUSER'),
-        'PASSWORD': getenv('PGPASSWORD'),
-        'HOST': getenv('PGHOST'),
-        'PORT': 5432,
-        'PGENDPOINT': getenv('PGENDPOINT'),
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
-    }
+    'default': dj_database_url.config(default=getenv('DB_URL'))
 }
 
 # Password validation
