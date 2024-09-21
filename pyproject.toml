@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "project-poetry"
-version = "0.1.0"
+version = "0.1.5"
 description = ""
 authors = ["Denys Puliaiev <d.s.puliaiev@gmail.com>"]
 readme = "README.md"

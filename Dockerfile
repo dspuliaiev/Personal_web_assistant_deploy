@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM python:3.12-slim AS builder
+FROM python:3.12-bullseye AS builder
 
 # Set environment variables to prevent Python from writing .pyc files and to buffer stdout/stderr
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -26,7 +26,7 @@ COPY . /app/
 RUN python manage.py collectstatic --noinput
 
 # Stage 2: Final
-FROM python:3.12-slim
+FROM python:3.12-bullseye
 
 # Set environment variables to prevent Python from writing .pyc files and to buffer stdout/stderr
 ENV PYTHONDONTWRITEBYTECODE=1
