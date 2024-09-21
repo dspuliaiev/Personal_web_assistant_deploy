@@ -25,5 +25,5 @@ urlpatterns = [
     path('notes/', include('notes.urls')),
     path('files/', include('files.urls')),
     path('weather/', include('weather.urls')),
-    path('news/', views.news_list, name='news'),
+    path('news/', include('news_scraping.urls')),
 ]

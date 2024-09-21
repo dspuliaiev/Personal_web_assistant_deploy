@@ -3,44 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>News List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <script>
         function refreshPage() {
             window.location.reload();
         }
-
         setInterval(refreshPage, 15 * 60 * 1000); // Refresh every 15 minutes
     </script>
 </head>
 <body>
-    <h1>News List</h1>
-    <form method="GET">
-        <input type="text" name="keyword" placeholder="Search by keyword" value="{{ keyword }}">
-        <button type="submit">Search</button>
-    </form>
-    {% for news_item in news_list %}
-        <h2>{{ news_item.title }}</h2>
-        <p><a href="{{ news_item.link }}">Read more</a></p>
-        <p>{{ news_item.description }}</p>
-    {% empty %}
-        <p>No news found.</p>
-    {% endfor %}
-
-    {% if news_list.has_other_pages %}
+    {% extends "contacts/base.html" %}
+    {% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">News List</h1>
+        <form method="GET" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="keyword" class="form-control" placeholder="Search by keyword" value="{{ keyword }}">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </form>
+        {% for news_item in news_list %}
+        <div class="card bg-light bg-gradient mb-2">
+            <div class="card-body">
+                <h2 class="card-title">{{ news_item.title }}</h2>
+                <p class="card-text"><a href="{{ news_item.link }}">Read more</a></p>
+                <p class="card-text">{{ news_item.description }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-warning" role="alert">No news found.</div>
+        {% endfor %}
+        {% if news_list.has_other_pages %}
         <div class="pagination">
             {% if news_list.has_previous %}
-                <a href="?page=1&keyword={{ keyword }}">first</a>
-                <a href="?page={{ news_list.previous_page_number }}&keyword={{ keyword }}">previous</a>
+            <a href="?page=1&keyword={{ keyword }}" class="btn btn-outline-primary">first</a>
+            <a href="?page={{ news_list.previous_page_number }}&keyword={{ keyword }}" class="btn btn-outline-primary">previous</a>
             {% endif %}
-
-            <span class="current-page">
-                Page {{ news_list.number }} of {{ news_list.paginator.num_pages }}.
-            </span>
-
+            <span class="current-page">Page {{ news_list.number }} of {{ news_list.paginator.num_pages }}.</span>
             {% if news_list.has_next %}
-                <a href="?page={{ news_list.next_page_number }}&keyword={{ keyword }}">next</a>
-                <a href="?page={{ news_list.paginator.num_pages }}&keyword={{ keyword }}">last</a>
+            <a href="?page={{ news_list.next_page_number }}&keyword={{ keyword }}" class="btn btn-outline-primary">next</a>
+            <a href="?page={{ news_list.paginator.num_pages }}&keyword={{ keyword }}" class="btn btn-outline-primary">last</a>
             {% endif %}
         </div>
-    {% endif %}
+        {% endif %}
+    </div>
+    {% endblock %}
 </body>
 </html>

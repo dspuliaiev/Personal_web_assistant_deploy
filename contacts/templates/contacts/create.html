@@ -5,20 +5,52 @@
     <h2 class="text-center mb-4">Create contact</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.first_name.label_tag }}
-        <input type="text" name="first_name" placeholder="First name" class="form-control mb-2">
-        {{ form.last_name.label_tag }}
-        <input type="text" name="last_name" placeholder="Last name" class="form-control mb-2">
-        {{ form.phone_number.label_tag }}
-        <input type="text" name="phone_number" placeholder="Phone number" class="form-control mb-2">
-        {{ form.email.label_tag }}
-        <input type="email" name="email" placeholder="Email" class="form-control mb-2">
-        {{ form.birthday.label_tag }}
-        <input type="date" name="birthday" placeholder="Birthday" class="form-control mb-2">
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {% if field.name == 'first_name' %}
+            <input type="text" class="form-control" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="Enter your first name">
+            {% elif field.name == 'last_name' %}
+            <input type="text" class="form-control" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="Enter your last name">
+            {% elif field.name == 'phone_number' %}
+            <input type="text" class="form-control" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="e.g. +1234567890">
+            {% elif field.name == 'email' %}
+            <input type="email" class="form-control" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="Enter a valid email address">
+            {% elif field.name == 'birthday' %}
+            <input type="text" class="form-control flatpickr-input" data-input name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="e.g. YYYY-MM-DD">
+            {% else %}
+            {{ field }}
+            {% endif %}
+            {% if field.errors %}
+            <div class="alert alert-danger">
+                {% for error in field.errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
         <button type="submit" class="btn btn-primary">Submit</button>
         <a href="{% url 'contacts:main' %}" class="btn btn-light">Return</a>
     </form>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    flatpickr('.flatpickr-input', {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+    });
+</script>
 {% endblock %}
 
 
