@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- Поисковая форма -->
+    <form method="GET" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="Поиск по ключевому слову" value="{{ keyword }}">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Поиск</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Список новостей -->
+    {% for news_item in news_list %}
+    <div class="card bg-light bg-gradient mb-2">
+        <div class="card-body">
+            <h2 class="card-title">{{ news_item.title }}</h2>
+            <p class="card-text"><a href="{{ news_item.link }}" target="_blank">Читать дальше</a></p>
+            <p class="card-text">{{ news_item.description }}</p>
+        </div>
+    </div>
+    {% empty %}
+    <div class="alert alert-warning" role="alert">Новостей не найдено.</div>
+    {% endfor %}
+
+    <!-- Пагинация -->
+    {% if news_list.has_other_pages %}
+    <div class="pagination">
+        {% if news_list.has_previous %}
+        <a href="?page=1&keyword={{ keyword }}" class="btn btn-outline-primary">Первая</a>
+        <a href="?page={{ news_list.previous_page_number }}&keyword={{ keyword }}" class="btn btn-outline-primary">Предыдущая</a>
+        {% endif %}
+        <span class="current-page">Страница {{ news_list.number }} из {{ news_list.paginator.num_pages }}.</span>
+        {% if news_list.has_next %}
+        <a href="?page={{ news_list.next_page_number }}&keyword={{ keyword }}" class="btn btn-outline-primary">Следующая</a>
+        <a href="?page={{ news_list.paginator.num_pages }}&keyword={{ keyword }}" class="btn btn-outline-primary">Последняя</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

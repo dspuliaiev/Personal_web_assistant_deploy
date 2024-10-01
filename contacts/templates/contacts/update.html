@@ -1,13 +1,35 @@
 {% extends "contacts/base.html" %}
 
-{% block content %}
-<h2>Update contact</h2>
+{% load static %}
+{% block carousel %}
+<div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 5px;">
+    <div class="row py-5">
+        <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+            <h1 class="display-4 text-white animated zoomIn">Contacts</h1>
+            <a href="{% url 'index' %}" class="h5 text-white">Home</a>
+            <i class="far fa-circle text-white px-2"></i>
+            <a href="{% url 'news_scraping:news_list' %}" class="h5 text-white">News</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="{% url 'contacts:delete' object.id %}" class="btn btn-danger"> Delete </a>
-    <a href="{% url 'contacts:list' %}" class="btn btn-light"> Return </a>
-</form>
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Update contact</h2>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{% url 'contacts:delete' object.id %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'contacts:list' %}" class="btn btn-light">Return</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

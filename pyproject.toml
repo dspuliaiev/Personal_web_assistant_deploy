@@ -17,6 +17,7 @@ gunicorn = "^23.0.0"
 dj-database-url = "^2.2.0"
 psycopg2 = "^2.9.9"
 scramp = "^1.4.5"
+utils = "^1.0.2"
 
 
 

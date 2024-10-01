@@ -151,25 +151,35 @@ cloudinary.config(
     cloud_name=CLOUDINARY_NAME,
     api_key=CLOUDINARY_API_KEY,
     api_secret=CLOUDINARY_API_SECRET
+
+
 )
 
-LOGGING = {
-     'version': 1,
-     'disable_existing_loggers': False,
-     'handlers': {
-         'console': {
-             'class': 'logging.StreamHandler',
-         },
-     },
-     'root': {
-         'handlers': ['console'],
-         'level': 'DEBUG',
-     },
-     'loggers': {
-         'django': {
-             'handlers': ['console'],
-             'level': 'DEBUG',
-             'propagate': True,
-         },
-     },
- }
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+
+# LOGGING = {
+#      'version': 1,
+#      'disable_existing_loggers': False,
+#      'handlers': {
+#          'console': {
+#              'class': 'logging.StreamHandler',
+#          },
+#      },
+#      'root': {
+#          'handlers': ['console'],
+#          'level': 'DEBUG',
+#      },
+#      'loggers': {
+#          'django': {
+#              'handlers': ['console'],
+#              'level': 'DEBUG',
+#              'propagate': True,
+#          },
+#      },
+#  }
