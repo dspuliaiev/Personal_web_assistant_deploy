@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-import urllib.request
-
+from django.http import FileResponse, HttpResponseNotFound
+import os
 from .models import Category, File
 from .forms import CategoryForm, FileForm
 
@@ -77,9 +77,21 @@ def create(request):
     return render(request, 'files/create.html', {"categories": categories, "backend_form": FileForm()})
 
 
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect, HttpResponseNotFound
+
+
 @login_required
 def download(request, file_id):
     file = get_object_or_404(File, pk=file_id)
-    if file:
-        urllib.request.urlretrieve(file.url.url, file.name_file)
-    return render(request, "files/download.html", {"file": file})
+    if file and file.url:
+        # Get the URL for the file from Cloudinary.
+        download_url = file.url.url
+
+        # Add the "attachment" flag to the URL.
+        download_url += "?attachment=true"
+
+        # Redirect the user to the download URL.
+        return HttpResponseRedirect(download_url)
+    return HttpResponseNotFound('File not found')
