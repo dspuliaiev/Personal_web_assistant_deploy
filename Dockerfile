@@ -26,7 +26,7 @@ RUN pip install --upgrade pip --no-cache-dir && pip install -r requirements.txt
 COPY . /app/
 
 # Collect static files
-RUN python git
+RUN python
 
 # Stage 2: Final
 FROM python:3.12-bullseye
