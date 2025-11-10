@@ -44,11 +44,6 @@ def loginuser(request):
     return render(request, 'users/login.html', context={"form": LoginForm()})
 
 
-@login_required
-def logoutuser(request):
-    logout(request)
-    return redirect(to='contacts:main')
-
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'users/password_reset.html'
