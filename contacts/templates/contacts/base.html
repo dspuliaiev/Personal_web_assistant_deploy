@@ -54,14 +54,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <form class="navbar-nav ms-auto py-0">
-                <a href="{% url 'index' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
-                <a href="{% url 'index' %}#about" class="nav-item nav-link {% if '#about' in request.get_full_path %}active{% endif %}">About</a>
-                <a href="{% url 'weather:weather' %}" class="nav-item nav-link {% if 'weather' in request.path %}active{% endif %}">Weather</a>
-                <a href="{% url 'news_scraping:news_list' %}" class="nav-item nav-link {% if 'news' in request.path %}active{% endif %}">News</a>
+                <a href="{% url 'index' %}"
+                   class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
+                <a href="{% url 'index' %}#about"
+                   class="nav-item nav-link {% if '#about' in request.get_full_path %}active{% endif %}">About</a>
+                <a href="{% url 'weather:weather' %}"
+                   class="nav-item nav-link {% if 'weather' in request.path %}active{% endif %}">Weather</a>
+                <a href="{% url 'news_scraping:news_list' %}"
+                   class="nav-item nav-link {% if 'news' in request.path %}active{% endif %}">News</a>
 
                 <!-- Контакты -->
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle {% if 'contacts' in request.path %}active{% endif %}" id="contactsDropdown" role="button"
+                    <a href="#" class="nav-link dropdown-toggle {% if 'contacts' in request.path %}active{% endif %}"
+                       id="contactsDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Contacts
                     </a>
@@ -70,7 +75,8 @@
                             <li><a class="dropdown-item" href="{% url 'contacts:list' %}">Contacts list</a></li>
                             <li><a class="dropdown-item" href="{% url 'contacts:create' %}">Create contact</a></li>
                             <li><a class="dropdown-item" href="{% url 'contacts:search' %}">Search contacts</a></li>
-                            <li><a class="dropdown-item" href="{% url 'contacts:birthdays' %}">Upcoming birthdays</a></li>
+                            <li><a class="dropdown-item" href="{% url 'contacts:birthdays' %}">Upcoming birthdays</a>
+                            </li>
                         {% else %}
                             <li><a class="dropdown-item" href="{% url 'users:signup' %}">Register</a></li>
                             <li><a class="dropdown-item" href="{% url 'users:login' %}">Login</a></li>
@@ -80,7 +86,8 @@
 
                 <!-- Нотатки -->
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle {% if 'notes' in request.path %}active{% endif %}" id="notesDropdown" role="button"
+                    <a href="#" class="nav-link dropdown-toggle {% if 'notes' in request.path %}active{% endif %}"
+                       id="notesDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Notes
                     </a>
@@ -98,7 +105,8 @@
 
                 <!-- Файлы -->
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle {% if 'files' in request.path %}active{% endif %}" id="filesDropdown" role="button"
+                    <a href="#" class="nav-link dropdown-toggle {% if 'files' in request.path %}active{% endif %}"
+                       id="filesDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Files
                     </a>
@@ -116,18 +124,19 @@
 
                 {% if user.is_authenticated %}
 
-                    <form method="post" action href="{% url 'users:logout' %}">
+                    <form method="post" action="{% url 'users:logout' %}">
                         {% csrf_token %}
-                      <button type ="submit" class="nav-item nav-link">Logout </button>
+                        <button type="submit" class="nav-item nav-link">Logout</button>
                     </form>
 
                 {% else %}
                     <a href="{% url 'users:signup' %}" class="nav-item nav-link">Register</a>
                     <a href="{% url 'users:login' %}" class="nav-item nav-link">Login</a>
                 {% endif %}
-            </div>
         </div>
-    </nav>
+     
+</div>
+</nav>
 </div>
 <!-- Navbar End -->
 
@@ -202,14 +211,16 @@
                     <a href="{% url 'index' %}" class="navbar-brand">
                         <h2 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Personal Assistant</h2>
                     </a>
-                    <p class="mt-3 mb-4">This virtual assistant simplifies daily routines by offering essential tools for users. 
-                        It delivers a user-friendly experience, ensuring efficient and convenient task management for all.</p>
-{#                    <form action="">#}
-{#                        <div class="input-group">#}
-{#                            <input type="text" class="form-control border-white p-3" placeholder="Your Email">#}
-{#                            <button class="btn btn-dark">Sign Up</button>#}
-{#                        </div>#}
-{#                    </form>#}
+                    <p class="mt-3 mb-4">This virtual assistant simplifies daily routines by offering essential tools
+                        for users.
+                        It delivers a user-friendly experience, ensuring efficient and convenient task management for
+                        all.</p>
+                    {#                    <form action="">#}
+                    {#                        <div class="input-group">#}
+                    {#                            <input type="text" class="form-control border-white p-3" placeholder="Your Email">#}
+                    {#                            <button class="btn btn-dark">Sign Up</button>#}
+                    {#                        </div>#}
+                    {#                    </form>#}
                 </div>
             </div>
             <div class="col-lg-8 col-md-6">
@@ -252,7 +263,8 @@
         <div class="row justify-content-end">
             <div class="col-lg-8 col-md-6">
                 <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                    <p class="mb-0">&copy; <a class="text-white border-bottom" href="{% url 'index' %}">Personal Assistant</a>. All Rights
+                    <p class="mb-0">&copy; <a class="text-white border-bottom" href="{% url 'index' %}">Personal
+                        Assistant</a>. All Rights
                         Reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -265,7 +277,8 @@
 <!-- Footer End -->
 
 <!-- Back to Top -->
-<a href="{% url 'index' %}" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+<a href="{% url 'index' %}" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i
+        class="bi bi-arrow-up"></i></a>
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

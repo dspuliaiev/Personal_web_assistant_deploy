@@ -11,18 +11,21 @@
                 <div class="card-body">
                     <form action="{% url 'users:login' %}" method="post">
                         {% csrf_token %}
+
                         <div class="form-group row">
-                            <label form="{{ form.username.id_for_label }}" class="col-sm-3 col-form-label">Username:</label>
+                            <label for="{{ form.username.id_for_label }}" class="col-sm-3 col-form-label">Username:</label>
                             <div class="col-sm-9">
                                 {{ form.username }}
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label form="{{ form.password.id_for_label }}" class="col-sm-3 col-form-label">Password:</label>
+                            <label for="{{ form.password.id_for_label }}" class="col-sm-3 col-form-label">Password:</label>
                             <div class="col-sm-9">
                                 {{ form.password }}
                             </div>
                         </div>
+
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Submit</button>
                             <button type="reset" class="btn btn-light">Reset</button>
@@ -37,7 +40,6 @@
     </div>
 </div>
 {% endblock %}
-
 
 
 

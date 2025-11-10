@@ -44,7 +44,6 @@ def loginuser(request):
     return render(request, 'users/login.html', context={"form": LoginForm()})
 
 
-
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'users/password_reset.html'
     email_template_name = 'users/password_reset_email.html'
