@@ -53,7 +53,7 @@
             <span class="fa fa-bars"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <form class="navbar-nav ms-auto py-0">
+            <div class="navbar-nav ms-auto py-0">
                 <a href="{% url 'index' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
                 <a href="{% url 'index' %}#about" class="nav-item nav-link {% if '#about' in request.get_full_path %}active{% endif %}">About</a>
                 <a href="{% url 'weather:weather' %}" class="nav-item nav-link {% if 'weather' in request.path %}active{% endif %}">Weather</a>
@@ -115,12 +115,6 @@
                 </div>
 
                 {% if user.is_authenticated %}
-
-                    <form method = "post" action = "{% url "users:logout" %}">
-                    {% csrf_token %}
-                    <button type="=submit" class="nav-item nav-link"> ogout </button>
-                    </form>
-
                     <a href="{% url 'users:logout' %}" class="nav-item nav-link">Logout</a>
                 {% else %}
                     <a href="{% url 'users:signup' %}" class="nav-item nav-link">Register</a>
